@@ -1,11 +1,30 @@
 import * as express from 'express';
 import { Message } from '@my-lyrical-graph-ql/api-interfaces';
+import { graphqlHTTP } from 'express-graphql';
+import mongoose from 'mongoose';
+import schema from './schema/schema';
 
 const app = express();
+const MONGO_URI = 'mongodb://localhost:27017/lyricaldb';
 
-const greeting: Message = { message: 'Welcome to api!' };
+mongoose.connect(MONGO_URI);
+mongoose.connection
+  .once('open', () => console.log('Connected to MongoLab instance.'))
+  .on('error', (error) => console.log('Error connecting to MongoLab:', error));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+);
 
 app.get('/api', (req, res) => {
+  const greeting: Message = { message: 'Welcome to api!' };
+
   res.send(greeting);
 });
 

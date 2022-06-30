@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
+    "start": "nx run-many --target=serve --projects=client,api --parallel=true",
     "build": "nx build",
     "test": "nx test"
   },
@@ -11,6 +11,9 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "express": "4.17.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.5.0",
+    "mongoose": "^6.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",
