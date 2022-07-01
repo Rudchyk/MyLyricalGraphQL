@@ -1,6 +1,12 @@
+### Links
+
+- [Docs Mongoose](https://mongoosejs.com/)
+- [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
+- [Docs Apollo React Client](https://www.apollographql.com/docs/react/)
+
 ### GraphQL Playground
 
-[Playground](http://localhost:4200/api/graphql)
+- [API GraphQL Playground](http://localhost:4200/api/graphql)
 
 ```
 mutation {
