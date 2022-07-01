@@ -29,6 +29,12 @@
       ],
       "@client/pages": [
         "apps/client/src/pages/index.ts"
+      ],
+      "@client/queries": [
+        "apps/client/src/gql/queries/index.ts"
+      ],
+      "@client/mutations": [
+        "apps/client/src/gql/mutations/index.ts"
       ]
     }
   },

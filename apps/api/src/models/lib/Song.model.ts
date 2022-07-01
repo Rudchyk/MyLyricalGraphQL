@@ -1,11 +1,8 @@
-import { Document, Schema, model, Model } from 'mongoose';
+import { Schema, model, Model } from 'mongoose';
 import { LyricModel } from '@api/models';
+import { Song } from '@my-lyrical-graph-ql/api-interfaces';
 
-interface SongSchemaInterface extends Document {
-  title: string;
-  user: Schema.Types.ObjectId;
-  lyrics: Schema.Types.ObjectId[];
-}
+type SongSchemaInterface = Song;
 
 interface SongModelInterface extends Model<SongSchemaInterface> {
   findLyrics(id: string): Schema.Types.ObjectId[];

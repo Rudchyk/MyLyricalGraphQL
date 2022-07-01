@@ -1,11 +1,7 @@
-import { Document, Schema, model, Model } from 'mongoose';
+import { Schema, model, Model } from 'mongoose';
+import { Lyric } from '@my-lyrical-graph-ql/api-interfaces';
 
-export interface LyricSchemaInterface extends Document {
-  song: Schema.Types.ObjectId;
-  likes: number;
-  content: string;
-  like(id: string): void;
-}
+type LyricSchemaInterface = Lyric;
 
 interface LyricModelInterface extends Model<LyricSchemaInterface> {
   like(id: string): void;
@@ -21,8 +17,6 @@ const LyricSchema = new Schema<LyricSchemaInterface, LyricModelInterface>({
 });
 
 LyricSchema.static('like', async function (id) {
-  console.log('id', id);
-
   const lyric = await this.findById(id);
 
   ++lyric.likes;

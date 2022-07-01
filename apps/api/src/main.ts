@@ -1,5 +1,4 @@
 import * as express from 'express';
-import { Message } from '@my-lyrical-graph-ql/api-interfaces';
 import { graphqlHTTP } from 'express-graphql';
 import mongoose from 'mongoose';
 import schema from './schema/schema';
@@ -23,7 +22,7 @@ app.use(
 );
 
 app.get('/api', (req, res) => {
-  const greeting: Message = { message: 'Welcome to api!' };
+  const greeting = { message: 'Welcome to api!' };
 
   res.send(greeting);
 });
