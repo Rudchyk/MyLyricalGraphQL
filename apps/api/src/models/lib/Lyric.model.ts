@@ -7,7 +7,9 @@ export interface LyricSchemaInterface extends Document {
   like(id: string): void;
 }
 
-type LyricModelInterface = Model<LyricSchemaInterface>;
+interface LyricModelInterface extends Model<LyricSchemaInterface> {
+  like(id: string): void;
+}
 
 const LyricSchema = new Schema<LyricSchemaInterface, LyricModelInterface>({
   song: {
@@ -18,14 +20,15 @@ const LyricSchema = new Schema<LyricSchemaInterface, LyricModelInterface>({
   content: String,
 });
 
-// LyricSchema.statics.like = async (id) => {
-//   const Lyric = model('Lyric');
-//   const lyric = await Lyric.findById(id);
+LyricSchema.static('like', async function (id) {
+  console.log('id', id);
 
-//   ++lyric.likes;
+  const lyric = await this.findById(id);
 
-//   lyric.save();
-// };
+  ++lyric.likes;
+
+  return await lyric.save();
+});
 
 export const LyricModel = model<LyricSchemaInterface, LyricModelInterface>(
   'Lyric',

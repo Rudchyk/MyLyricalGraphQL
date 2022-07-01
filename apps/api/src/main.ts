@@ -15,7 +15,7 @@ mongoose.connection
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
-  '/graphql',
+  '/api/graphql',
   graphqlHTTP({
     schema,
     graphiql: true,

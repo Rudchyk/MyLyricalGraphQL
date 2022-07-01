@@ -17,6 +17,12 @@
     "paths": {
       "@my-lyrical-graph-ql/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
+      ],
+      "@api/types": [
+        "apps/api/src/types/index.ts"
+      ],
+      "@api/models": [
+        "apps/api/src/models/index.ts"
       ]
     }
   },

@@ -1,8 +1,6 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID } from 'graphql';
-import SongType from './song_type';
-import LyricType from './lyric_type';
-import LyricModel from '../models/Lyric.model';
-import SongModel from '../models/Song.model';
+import { SongType, LyricType } from '@api/types';
+import { LyricModel, SongModel } from '@api/models';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -25,16 +23,12 @@ const mutation = new GraphQLObjectType({
     likeLyric: {
       type: LyricType,
       args: { id: { type: GraphQLID } },
-      // resolve(parentValue, { id }) {
-      //   return LyricModel.like(id);
-      // },
+      resolve: (_, { id }) => LyricModel.like(id),
     },
     deleteSong: {
       type: SongType,
       args: { id: { type: GraphQLID } },
-      // resolve(parentValue, { id }) {
-      //   return SongModel.remove({ _id: id });
-      // },
+      resolve: (_, { id }) => SongModel.remove({ _id: id }),
     },
   },
 });

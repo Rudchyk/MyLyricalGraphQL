@@ -1,5 +1,5 @@
 import { Document, Schema, model, Model } from 'mongoose';
-import LyricModel from './Lyric.model';
+import { LyricModel } from '@api/models';
 
 interface SongSchemaInterface extends Document {
   title: string;

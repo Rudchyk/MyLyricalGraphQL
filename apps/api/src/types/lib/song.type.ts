@@ -4,17 +4,17 @@ import {
   GraphQLID,
   GraphQLList,
 } from 'graphql';
-import LyricType from './lyric_type';
-import SongModel from '../models/Song.model';
+import { LyricType } from '@api/types';
+import { SongModel } from '@api/models';
 
-const SongType = new GraphQLObjectType({
+export const SongType = new GraphQLObjectType({
   name: 'SongType',
   fields: () => ({
     id: { type: GraphQLID },
     title: { type: GraphQLString },
     lyrics: {
       type: new GraphQLList(LyricType),
-      resolve: (parentValue) => SongModel.findLyrics(parentValue.id),
+      resolve: ({ id }) => SongModel.findLyrics(id),
     },
   }),
 });

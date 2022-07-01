@@ -4,12 +4,10 @@ import {
   GraphQLID,
   GraphQLNonNull,
 } from 'graphql';
-import SongType from './song_type';
-import LyricType from './lyric_type';
-import LyricModel from '../models/Lyric.model';
-import SongModel from '../models/Song.model';
+import { SongType, LyricType } from '@api/types';
+import { LyricModel, SongModel } from '@api/models';
 
-const RootQuery = new GraphQLObjectType({
+export const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
     songs: {
