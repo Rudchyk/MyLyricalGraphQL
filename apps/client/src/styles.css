@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+.collection-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.material-icons {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.vote-box {
+  display: flex;
+  align-items: center;
+}

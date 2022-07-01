@@ -23,6 +23,12 @@
       ],
       "@api/models": [
         "apps/api/src/models/index.ts"
+      ],
+      "@client/components": [
+        "apps/client/src/components/index.ts"
+      ],
+      "@client/pages": [
+        "apps/client/src/pages/index.ts"
       ]
     }
   },
