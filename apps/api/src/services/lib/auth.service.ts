@@ -7,6 +7,7 @@ passport.serializeUser(({ id }, done) => done(null, id));
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await UserModel.findById(id);
+
     done(null, user);
   } catch (error) {
     done(error, false, 'Can not deserialize User');
@@ -14,29 +15,32 @@ passport.deserializeUser(async (id, done) => {
 });
 
 passport.use(
-  new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-    UserModel.findOne({ email: email.toLowerCase() }, (err, user) => {
-      if (err) {
-        return done(err);
-      }
+  new LocalStrategy(
+    { usernameField: 'email' },
+    async (email, password, done) => {
+      try {
+        const user = await UserModel.findOne({ email: email.toLowerCase() });
 
-      if (!user) {
-        return done(null, false, 'Invalid Credentials');
-      }
-
-      user.comparePassword(password, (err, isMatch) => {
-        if (err) {
-          return done(err);
+        if (!user) {
+          return done(null, false, 'Incorrect username or password');
         }
 
-        if (isMatch) {
-          return done(null, user);
-        }
+        (user as any).comparePassword(password, (err, isMatch) => {
+          if (err) {
+            return done(err);
+          }
 
-        return done(null, false, 'Invalid credentials.');
-      });
-    });
-  })
+          if (isMatch) {
+            return done(null, user);
+          }
+
+          return done(null, false, 'Incorrect password');
+        });
+      } catch (error) {
+        return done(error);
+      }
+    }
+  )
 );
 
 export const signup = async ({ email, password, req }) => {
@@ -72,11 +76,15 @@ export const signup = async ({ email, password, req }) => {
 
 export const login = ({ email, password, req }) => {
   return new Promise((resolve, reject) => {
-    passport.authenticate('local', (err, user) => {
-      console.log('err', err);
+    passport.authenticate('local', (err, user, message) => {
+      if (err) {
+        reject(err);
+      }
 
-      if (!user) {
-        reject('Invalid credentials.');
+      if (!user && message) {
+        reject(message);
+      } else if (!user && !message) {
+        reject('Invalid credentials');
       }
 
       req.login(user, (err) => {
