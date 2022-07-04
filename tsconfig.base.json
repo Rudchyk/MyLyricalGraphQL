@@ -41,6 +41,12 @@
       ],
       "@client/mutations": [
         "apps/client/src/gql/mutations/index.ts"
+      ],
+      "@client/constants": [
+        "apps/client/src/constants/index.ts"
+      ],
+      "@client/templates": [
+        "apps/client/src/templates/index.ts"
       ]
     }
   },

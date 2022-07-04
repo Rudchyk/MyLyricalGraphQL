@@ -113,4 +113,6 @@ mutation {
 
 ```
 mkdir -p apps/api/src/services/lib && touch apps/api/src/services/index.ts
+mkdir -p apps/client/src/constants/lib && touch apps/client/src/constants/index.ts
+mkdir -p apps/client/src/templates/lib && touch apps/client/src/templates/index.ts
 ```
