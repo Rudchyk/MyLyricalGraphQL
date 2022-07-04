@@ -16,7 +16,11 @@ export const authMutations = {
     resolve: (_, args, req) => {
       const { user } = req;
 
-      req.logout();
+      req.logout((err) => {
+        if (err) {
+          console.log('logout err', err);
+        }
+      });
 
       return user;
     },

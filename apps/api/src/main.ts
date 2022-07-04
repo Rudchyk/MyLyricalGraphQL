@@ -24,6 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
+    resave: true,
+    saveUninitialized: true,
     secret: process.env.NX_SECRET,
     store: MongoStore.create({
       mongoUrl: process.env.NX_MONGO_URI,
@@ -31,6 +33,7 @@ app.use(
   })
 );
 app.use(passport.initialize());
+app.use(passport.session());
 app.use(
   '/api/graphql',
   graphqlHTTP({

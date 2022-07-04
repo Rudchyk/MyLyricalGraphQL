@@ -2,14 +2,15 @@ import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { UserModel } from '@api/models';
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
+passport.serializeUser(({ id }, done) => done(null, id));
 
-passport.deserializeUser((id, done) => {
-  UserModel.findById(id, (err, user) => {
-    done(err, user);
-  });
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await UserModel.findById(id);
+    done(null, user);
+  } catch (error) {
+    done(error, false, 'Can not deserialize User');
+  }
 });
 
 passport.use(
@@ -72,11 +73,19 @@ export const signup = async ({ email, password, req }) => {
 export const login = ({ email, password, req }) => {
   return new Promise((resolve, reject) => {
     passport.authenticate('local', (err, user) => {
+      console.log('err', err);
+
       if (!user) {
         reject('Invalid credentials.');
       }
 
-      req.login(user, () => resolve(user));
+      req.login(user, (err) => {
+        if (err) {
+          reject(err);
+        }
+
+        resolve(user);
+      });
     })({ body: { email, password } });
   });
 };

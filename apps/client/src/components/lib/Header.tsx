@@ -24,7 +24,9 @@ export const Header = () => {
     if (user) {
       return (
         <li>
-          <button onClick={() => logout()}>Logout</button>
+          <a href="#" onClick={() => logout()}>
+            Logout
+          </a>
         </li>
       );
     } else {
