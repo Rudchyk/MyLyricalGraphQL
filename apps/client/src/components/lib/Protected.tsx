@@ -14,7 +14,7 @@ export const Protected: FC<ProtectedProps> = ({ children }) => {
 
   useEffect(() => {
     if (!loading && !data?.user) {
-      navigate(`/${ClientRoutesEnum.SONGS}`, { replace: true });
+      navigate(`/${ClientRoutesEnum.LOGIN}`, { replace: true });
     }
   }, [data]);
 

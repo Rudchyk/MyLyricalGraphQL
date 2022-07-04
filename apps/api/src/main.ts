@@ -10,7 +10,7 @@ import schema from './schema/schema';
 const app = express();
 const port = process.env.PORT || 3333;
 
-console.log('process.env', process.env);
+// console.log('process.env', process.env);
 // console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 // console.log('process.env.port', process.env.NODE_ENV);
 // console.log('process.env.NODE_ENV', process.env.NODE_ENV);
@@ -30,7 +30,7 @@ app.use(
     }),
   })
 );
-app.use(passport.initialize('session'));
+app.use(passport.initialize());
 app.use(
   '/api/graphql',
   graphqlHTTP({
