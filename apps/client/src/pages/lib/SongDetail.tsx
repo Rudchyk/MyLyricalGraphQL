@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { FETCH_SONG } from '@client/queries';
 import { useQuery } from '@apollo/client';
-import { Song, Lyric } from '@my-lyrical-graph-ql/api-interfaces';
+import { Song, Lyric } from '@api-interfaces';
 import { LyricList, LyricCreate } from '@client/components';
 
 interface SongPreview extends Omit<Song, 'lyrics'> {

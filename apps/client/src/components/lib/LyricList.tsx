@@ -1,7 +1,7 @@
 import { useState, FormEvent, ChangeEvent, FC } from 'react';
 import { LIKE_LYRIC } from '@client/mutations';
 import { useMutation } from '@apollo/client';
-import { Lyric } from '@my-lyrical-graph-ql/api-interfaces';
+import { Lyric } from '@api-interfaces';
 interface LyricListProps {
   lyrics: Lyric[];
 }

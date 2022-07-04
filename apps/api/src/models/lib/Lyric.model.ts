@@ -1,5 +1,5 @@
 import { Schema, model, Model } from 'mongoose';
-import { Lyric } from '@my-lyrical-graph-ql/api-interfaces';
+import { Lyric } from '@api-interfaces';
 
 type LyricSchemaInterface = Lyric;
 

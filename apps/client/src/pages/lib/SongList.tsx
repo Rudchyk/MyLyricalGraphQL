@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from '@apollo/client';
-import { Song } from '@my-lyrical-graph-ql/api-interfaces';
+import { Song } from '@api-interfaces';
 import { Link } from 'react-router-dom';
 import { FETCH_SONGS } from '@client/queries';
 import { DELETE_SONG } from '@client/mutations';

@@ -1,6 +1,6 @@
 import { Schema, model, Model } from 'mongoose';
 import { LyricModel } from '@api/models';
-import { Song } from '@my-lyrical-graph-ql/api-interfaces';
+import { Song } from '@api-interfaces';
 
 type SongSchemaInterface = Song;
 

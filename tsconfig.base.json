@@ -15,11 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-lyrical-graph-ql/api-interfaces": [
+      "@api-interfaces": [
         "libs/api-interfaces/src/index.ts"
       ],
       "@api/types": [
         "apps/api/src/types/index.ts"
+      ],
+      "@api/mutations": [
+        "apps/api/src/mutations/index.ts"
+      ],
+      "@api/services": [
+        "apps/api/src/services/index.ts"
       ],
       "@api/models": [
         "apps/api/src/models/index.ts"

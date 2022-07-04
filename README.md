@@ -65,4 +65,52 @@ mutation {
     }
   }
 }
+---
+{
+  user {
+    id,
+    email
+  }
+}
+---
+mutation {
+  signup(email: "sergii.rudchyk@gmail.com" password: "11111") {
+    id,
+    email,
+  }
+}
+=> Error: Email in use
+---
+mutation {
+  signup(email: "sergii.rudchyk1@gmail.com" password: "11111") {
+    id,
+    email,
+  }
+}
+---
+mutation {
+  logout{
+    id,
+    email
+  }
+}
+---
+mutation {
+  login(email: "sergii.rudchyk1@gmail.com" password: "11111") {
+    id,
+    email
+  }
+}
+---
+mutation {
+  login(email: "sergii.rudchyk122sd@gmail.com" password: "11111") {
+    id,
+    email
+  }
+}
+=> Invalid credentials
+```
+
+```
+mkdir -p apps/api/src/services/lib && touch apps/api/src/services/index.ts
 ```
